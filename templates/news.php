@@ -19,14 +19,17 @@
 
 <?php
 
+$news = $this->data['news'];
 
+foreach ($news as $article) { ?>
 
-foreach ($this->data['news'] as $article): ?>
-    <article>
-        <?php echo $article->getArticle(); ?>
-    </article>
+    <a href="/article.php?id=<?php echo $article->getArticle()['id']; ?>"><h1><?php echo $article->getArticle()['title']; ?></h1></a>
+    <h3><?php echo $article->getArticle()['author']; ?></h3>
+    <p><?php echo $article->getArticle()['content']; ?></p>
+    <hr>
 
-<?php endforeach; ?>
+<?php } ?>
+
 
 </body>
 </html>

@@ -4,15 +4,13 @@ require_once __DIR__ . '/classes/Uploader.php';
 require_once __DIR__ . '/classes/News.php';
 require_once  __DIR__ . '/classes/Article.php';
 require_once __DIR__ . '/classes/View.php';
+require_once __DIR__ . '/classes/DB.php';
 
-$path = __DIR__ . '/data.txt';
 
-$news = new News($path);
+$config = include __DIR__ . '/config.php';
 
-$view = new View;
+$db = new DB($config);
 
-$view->assign('news', $news->getNews());
+$data = $db->query('SELECT * FROM `news` WHERE id=:id', [':id' => 1]);
+var_dump($data);
 
-var_dump($view->getData());
-
-$view->display(__DIR__ . '/templates/news.php');

@@ -11,9 +11,14 @@
 
 <?php
 
+$article = $this->data['article']->getArticle();
 
+foreach ($article as $field) { ?>
 
-?>
+    <h1><?php echo $field['title']; ?></h1>
+    <p><?php echo $field['content']; ?></p>
+
+<?php } ?>
 
 </body>
 </html>

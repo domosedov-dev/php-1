@@ -4,12 +4,14 @@ require_once __DIR__ . '/classes/Uploader.php';
 require_once __DIR__ . '/classes/News.php';
 require_once  __DIR__ . '/classes/Article.php';
 require_once __DIR__ . '/classes/View.php';
+require_once __DIR__ . '/classes/NewsDb.php';
+require_once __DIR__ . '/classes/ArticleDb.php';
 
-$news = new News(__DIR__ . '/data.txt');
-$data = $news->getNews();
+
+$news = new NewsDb(include __DIR__ . '/config.php');
 
 $view = new View();
-
-$view->assign('news', $data);
-
+$view->assign('news', $news->getNews());
 $view->display(__DIR__ . '/templates/news.php');
+
+
